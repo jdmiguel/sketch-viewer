@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { renderWithTheme } from '../../../helpers/theme';
-import DocumentView from './view';
+import DocumentView from '../DocumentView';
 
 describe('<DocumentView />', () => {
   const props = {
