@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { ArtBoard } from 'src/helpers/types';
+import { Artboard } from 'src/helpers/types';
 import ArtboardNavigationContext from 'src/contexts/artboardNavigationContext';
 import Layout from 'src/components/layout/Layout';
 import Thumbnail from 'src/components/ui/Thumbnail';
@@ -23,7 +23,7 @@ const StyledThumbnailsWrapper = styled.div`
 
 type Props = {
   documentName: string;
-  artboards: ArtBoard[];
+  artboards: Artboard[];
 };
 
 const DocumentView: React.FC<Props> = ({ documentName, artboards }) => {
@@ -41,7 +41,7 @@ const DocumentView: React.FC<Props> = ({ documentName, artboards }) => {
         </StyledArtboardWrapper>
       ) : (
         <StyledThumbnailsWrapper>
-          {artboards.map((artboard: ArtBoard) => (
+          {artboards.map((artboard: Artboard) => (
             <Thumbnail
               key={artboard.name}
               imgPath={artboard.files[0].thumbnails[0].url}

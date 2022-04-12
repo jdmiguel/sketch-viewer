@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const getQuery = (id: string) => gql`
-  query {
-    share(id: "${id}") {
+export const GET_ARTBOARDS = gql`
+  query getArtboards($id: Int!) {
+    share(id: $id) {
       identifier
       version {
         document {

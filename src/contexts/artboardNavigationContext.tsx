@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from 'react';
-import { ArtBoard } from 'src/helpers/types';
+import { Artboard } from 'src/helpers/types';
 
 const defaultBasicArtboard = {
   files: [
@@ -33,13 +33,13 @@ const ArtboardNavigationContext = createContext({
 });
 
 type Props = {
-  artboards: ArtBoard[];
+  artboards: Artboard[];
   children: ReactNode;
 };
 
 export const ArtboardNavigationContextProvider = ({ artboards, children }: Props) => {
   const [isArtboardDetailMode, setIsArtboardDetailMode] = useState(false);
-  const [selectedArtboard, setSelectedArtboard] = useState<ArtBoard>(defaultBasicArtboard);
+  const [selectedArtboard, setSelectedArtboard] = useState<Artboard>(defaultBasicArtboard);
   const [step, setStep] = useState(0);
 
   const totalSteps = artboards.length;

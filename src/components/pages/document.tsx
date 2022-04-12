@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { useParams } from 'react-router-dom';
-import { getQuery } from 'src/helpers/query';
+import { useParams, Params } from 'react-router-dom';
+import { GET_ARTBOARDS } from 'src/helpers/query';
 import { ArtboardNavigationContextProvider } from 'src/contexts/artboardNavigationContext';
 import Loader from 'src/components/ui/Loader';
-import { ArtBoard } from 'src/helpers/types';
+import { Artboard, ArtboardsQueryData, ArtboardsQueryVars } from 'src/helpers/types';
 import DocumentView from './DocumentView';
 
 const Document: React.FC = () => {
   const [documentName, setDocumentName] = useState('');
-  const [artboards, setArtboards] = useState<ArtBoard[]>([]);
+  const [artboards, setArtboards] = useState<Artboard[]>([]);
 
-  const { id } = useParams();
-  const { loading, data } = useQuery(getQuery(`${id}`));
+  const { id } = useParams<Params>();
+  const { loading, data } = useQuery<ArtboardsQueryData, ArtboardsQueryVars>(GET_ARTBOARDS, {
+    variables: { id },
+  });
 
   useEffect(() => {
-    if (loading) {
+    if (loading || !data) {
       return;
     }
 

@@ -1,9 +1,3 @@
-export type Document = {
-  id?: string;
-  imgPath: string;
-  name: string;
-};
-
 type Thumbnail = {
   height: number;
   width: number;
@@ -18,8 +12,32 @@ type File = {
   width: number;
 };
 
-export type ArtBoard = {
+export type Artboard = {
   files: File[];
   isArtboard: boolean;
+  name: string;
+};
+
+export type ArtboardsQueryData = {
+  share: {
+    identifier: string;
+    version: {
+      document: {
+        name: string;
+        artboards: {
+          entries: Artboard[];
+        };
+      };
+    };
+  };
+};
+
+export type ArtboardsQueryVars = {
+  id?: string;
+};
+
+export type Document = {
+  id?: string;
+  imgPath: string;
   name: string;
 };
