@@ -4,7 +4,7 @@ import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/c
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'src/helpers/theme';
-import GlobalStyles from 'src/helpers/GlobalStyles';
+import GlobalStyles from 'src/helpers/globalStyles';
 import App from 'src/components/App';
 
 const client = new ApolloClient({
