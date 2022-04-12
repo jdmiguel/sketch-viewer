@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import { ArtBoard } from 'src/helpers/types';
 import ArtboardNavigationContext from 'src/contexts/artboardNavigationContext';
-import Layout from 'src/components/layout';
+import Layout from 'src/components/layout/Layout';
 import Thumbnail from 'src/components/ui/Thumbnail';
 
 const StyledArtboardWrapper = styled.div`

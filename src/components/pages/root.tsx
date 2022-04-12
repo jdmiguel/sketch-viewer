@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Layout from 'src/components/layout';
+import Layout from 'src/components/layout/Layout';
 import Thumbnail from 'src/components/ui/Thumbnail';
 import { documents } from 'src/helpers/index';
 import { Document } from 'src/helpers/types';
