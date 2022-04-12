@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { renderWithTheme } from '../../../helpers/theme';
-import Header from '.';
+import Header from '../Header';
 
 describe('<Header />', () => {
   const props = {

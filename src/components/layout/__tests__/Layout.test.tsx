@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { renderWithTheme } from '../../helpers/theme';
-import Layout from '.';
+import { renderWithTheme } from '../../../helpers/theme';
+import Layout from '../Layout';
 
 describe('<Layout />', () => {
   const props = {
