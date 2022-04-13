@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import Layout from '../Layout';
 
 describe('<Layout />', () => {
@@ -11,11 +10,11 @@ describe('<Layout />', () => {
 
   it('passes the correct title to the header', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <Layout {...props} />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
     const header = screen.getByRole('banner');

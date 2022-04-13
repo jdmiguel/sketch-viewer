@@ -1,31 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import DocumentView from '../DocumentView';
 
 describe('<DocumentView />', () => {
   const props = {
-    documentName: 'Code test',
+    documentName: 'Document name mocked',
     artboards: [
-      {
-        files: [
-          {
-            height: 800,
-            scale: 0,
-            thumbnails: [
-              {
-                height: 400,
-                width: 400,
-                url: 'https://resources-live.sketch.cloud/files/abbb4734-7963-414c-8f09-108988579905.png',
-              },
-            ],
-            url: 'https://resources-live.sketch.cloud/files/abbb4734-7963-414c-8f09-108988579905.png',
-            width: 800,
-          },
-        ],
-        isArtboard: true,
-        name: 'Xerox alto',
-      },
       {
         files: [
           {
@@ -35,57 +15,45 @@ describe('<DocumentView />', () => {
               {
                 height: 400,
                 width: 400,
-                url: 'https://resources-live.sketch.cloud/files/3bf6e61f-d06d-4bc0-820b-2c5f60d2750c.png',
+                url: 'thumbnail_1.png',
               },
             ],
-            url: 'https://resources-live.sketch.cloud/files/3bf6e61f-d06d-4bc0-820b-2c5f60d2750c.png',
+            url: 'artboard_1.png',
             width: 800,
           },
         ],
         isArtboard: true,
-        name: 'Etch a Sketch',
+        name: 'First artboard mocked',
       },
     ],
   };
 
   it('displays the correct document name', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <DocumentView {...props} />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
-    expect(screen.getByText('Code test')).toBeInTheDocument();
+    expect(screen.getByText('Document name mocked')).toBeInTheDocument();
   });
 
-  it('displays the correct thumbnails', () => {
+  it('displays the correct thumbnail', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <DocumentView {...props} />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
-    const thumbnails = screen.getAllByRole('button');
-    expect(thumbnails.length).toBe(2);
+    const thumbnail = screen.getByRole('button');
 
-    const [firstThumbnail, secondThumbnail] = thumbnails;
-
-    const firstThumbnailImage = firstThumbnail.querySelector('img');
-    expect(firstThumbnailImage.getAttribute('src')).toBe(
-      'https://resources-live.sketch.cloud/files/abbb4734-7963-414c-8f09-108988579905.png',
-    );
-    const firstThumbnailText = firstThumbnail.querySelector('p');
-    expect(firstThumbnailText.textContent).toBe('Xerox alto');
-
-    const secondThumbnailImage = secondThumbnail.querySelector('img');
-    expect(secondThumbnailImage.getAttribute('src')).toBe(
-      'https://resources-live.sketch.cloud/files/3bf6e61f-d06d-4bc0-820b-2c5f60d2750c.png',
-    );
-    const secondThumbnailText = secondThumbnail.querySelector('p');
-    expect(secondThumbnailText.textContent).toBe('Etch a Sketch');
+    const thumbnailImage = thumbnail.querySelector('img');
+    expect(thumbnailImage.getAttribute('src')).toBe('thumbnail_1.png');
+    const firstThumbnailText = thumbnail.querySelector('p');
+    expect(firstThumbnailText.textContent).toBe('First artboard mocked');
   });
 });

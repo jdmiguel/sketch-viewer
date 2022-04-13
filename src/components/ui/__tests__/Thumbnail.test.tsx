@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithTheme } from '../../../helpers/testUtils';
 import Thumbnail from '../Thumbnail';
 
 describe('<Thumbnail />', () => {
@@ -11,20 +11,31 @@ describe('<Thumbnail />', () => {
   };
 
   it('displays the correct thumbnail image', () => {
-    render(renderWithTheme(<Thumbnail {...props} />));
+    render(
+      <RenderWithTheme>
+        <Thumbnail {...props} />
+      </RenderWithTheme>,
+    );
 
     const image = screen.getByAltText('document');
     expect(image.getAttribute('src')).toBe('/document.png');
   });
 
   it('displays the correct thumbnail text', () => {
-    render(renderWithTheme(<Thumbnail {...props} />));
-
+    render(
+      <RenderWithTheme>
+        <Thumbnail {...props} />
+      </RenderWithTheme>,
+    );
     expect(screen.getByText('document')).toBeInTheDocument();
   });
 
   it('displays the correct styles with withRootStyles', () => {
-    render(renderWithTheme(<Thumbnail {...props} withRootStyles />));
+    render(
+      <RenderWithTheme>
+        <Thumbnail {...props} withRootStyles />
+      </RenderWithTheme>,
+    );
 
     const thumbnail = screen.getByRole('button');
     expect(thumbnail).toHaveStyleRule('align-items', 'flex-start');
@@ -38,7 +49,11 @@ describe('<Thumbnail />', () => {
   it('calls the correct callback with the expected param on click', async () => {
     const onClick = jest.fn();
 
-    render(renderWithTheme(<Thumbnail {...props} onClick={onClick} />));
+    render(
+      <RenderWithTheme>
+        <Thumbnail {...props} onClick={onClick} />
+      </RenderWithTheme>,
+    );
 
     await userEvent.click(screen.getByRole('button'));
     expect(onClick).toHaveBeenCalledWith('document');

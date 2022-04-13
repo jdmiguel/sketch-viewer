@@ -24,7 +24,7 @@ const StyledLoader = styled.div`
 
 const Loader: React.FC = () => (
   <StyledLoaderWrapper>
-    <StyledLoader />
+    <StyledLoader role="progressbar" />
   </StyledLoaderWrapper>
 );
 

@@ -34,6 +34,7 @@ exports[`<Loader /> renders correctly 1`] = `
   >
     <div
       class="c1"
+      role="progressbar"
     />
   </div>
 </div>

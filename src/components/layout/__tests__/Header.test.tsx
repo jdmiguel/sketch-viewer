@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import Header from '../Header';
 
 describe('<Header />', () => {
@@ -10,11 +9,11 @@ describe('<Header />', () => {
 
   it('displays the logo', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <Header {...props} />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
     expect(screen.getByAltText('logo')).toBeInTheDocument();
@@ -22,11 +21,11 @@ describe('<Header />', () => {
 
   it('displays the correct title', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <Header {...props} />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
     expect(screen.getByText('Pages')).toBeInTheDocument();
@@ -35,11 +34,11 @@ describe('<Header />', () => {
   describe('when the header has navigation', () => {
     it('does not display the logo', () => {
       render(
-        renderWithTheme(
-          <MemoryRouter>
+        <RenderWithRouter>
+          <RenderWithTheme>
             <Header {...props} withNavigation />
-          </MemoryRouter>,
-        ),
+          </RenderWithTheme>
+        </RenderWithRouter>,
       );
 
       expect(screen.queryByAltText('logo')).not.toBeInTheDocument();
@@ -47,11 +46,11 @@ describe('<Header />', () => {
 
     it('displays the close button', () => {
       render(
-        renderWithTheme(
-          <MemoryRouter>
+        <RenderWithRouter>
+          <RenderWithTheme>
             <Header {...props} withNavigation />
-          </MemoryRouter>,
-        ),
+          </RenderWithTheme>
+        </RenderWithRouter>,
       );
 
       const closeButton = screen.getAllByAltText('icon button')[0];
@@ -60,11 +59,11 @@ describe('<Header />', () => {
 
     it('displays the artboard navigation', () => {
       render(
-        renderWithTheme(
-          <MemoryRouter>
+        <RenderWithRouter>
+          <RenderWithTheme>
             <Header {...props} withNavigation />
-          </MemoryRouter>,
-        ),
+          </RenderWithTheme>
+        </RenderWithRouter>,
       );
 
       expect(screen.getByRole('navigation')).toBeInTheDocument();
@@ -72,11 +71,11 @@ describe('<Header />', () => {
 
     it('displays the title wrapper with the correct styles', () => {
       render(
-        renderWithTheme(
-          <MemoryRouter>
+        <RenderWithRouter>
+          <RenderWithTheme>
             <Header {...props} withNavigation />
-          </MemoryRouter>,
-        ),
+          </RenderWithTheme>
+        </RenderWithRouter>,
       );
 
       const titleWrapper = screen.getByText('Pages').parentNode;

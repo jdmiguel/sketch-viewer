@@ -1,16 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import Root from '../root';
 
 describe('<Root />', () => {
   it('displays the correct title', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <Root />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
     expect(screen.getByText('Page 1')).toBeInTheDocument();
@@ -18,11 +17,11 @@ describe('<Root />', () => {
 
   it('displays the correct thumbnails', () => {
     render(
-      renderWithTheme(
-        <MemoryRouter>
+      <RenderWithRouter>
+        <RenderWithTheme>
           <Root />
-        </MemoryRouter>,
-      ),
+        </RenderWithTheme>
+      </RenderWithRouter>,
     );
 
     const thumbnails = screen.getAllByRole('button');

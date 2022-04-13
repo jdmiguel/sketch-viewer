@@ -1,10 +1,14 @@
 import { render } from '@testing-library/react';
-import { renderWithTheme } from '../../../helpers/theme';
+import { RenderWithTheme } from '../../../helpers/testUtils';
 import Loader from '../Loader';
 
 describe('<Loader />', () => {
   it('renders correctly', () => {
-    const { container } = render(renderWithTheme(<Loader />));
+    const { container } = render(
+      <RenderWithTheme>
+        <Loader />
+      </RenderWithTheme>,
+    );
 
     expect(container).toMatchSnapshot();
   });
