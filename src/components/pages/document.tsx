@@ -12,18 +12,14 @@ const Document: React.FC = () => {
   const [artboards, setArtboards] = useState<Artboard[]>([]);
 
   const { id } = useParams<Params>();
-  const { loading, data, error } = useQuery<ArtboardsQueryData, ArtboardsQueryVars>(GET_ARTBOARDS, {
+  const { loading, data } = useQuery<ArtboardsQueryData, ArtboardsQueryVars>(GET_ARTBOARDS, {
     variables: { id },
   });
 
   useEffect(() => {
-    console.log({ data });
-    console.log({ error });
     if (loading || !data) {
       return;
     }
-
-    console.log('DATA POST: ', data);
 
     setDocumentName(data.share.version.document.name);
     setArtboards(data.share.version.document.artboards.entries);

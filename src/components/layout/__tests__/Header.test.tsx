@@ -53,7 +53,7 @@ describe('<Header />', () => {
         </RenderWithRouter>,
       );
 
-      const closeButton = screen.getAllByAltText('icon button')[0];
+      const [closeButton] = screen.getAllByAltText('icon button');
       expect(closeButton.getAttribute('src')).toBe('close.svg');
     });
 

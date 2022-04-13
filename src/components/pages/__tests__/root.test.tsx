@@ -12,6 +12,18 @@ describe('<Root />', () => {
       </RenderWithRouter>,
     );
 
+    const header = screen.getByRole('banner');
+    expect(header.querySelector('h2').textContent).toBe('Pages');
+  });
+
+  it('displays the correct subtitle', () => {
+    render(
+      <RenderWithRouter>
+        <RenderWithTheme>
+          <Root />
+        </RenderWithTheme>
+      </RenderWithRouter>,
+    );
     expect(screen.getByText('Page 1')).toBeInTheDocument();
   });
 

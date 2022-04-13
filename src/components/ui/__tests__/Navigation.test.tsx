@@ -3,26 +3,26 @@ import { RenderWithTheme } from '../../../helpers/testUtils';
 import Navigation from '../Navigation';
 
 describe('<Navigation />', () => {
-  it('displays the arrow left button', () => {
+  it('displays the next button', () => {
     render(
       <RenderWithTheme>
         <Navigation />
       </RenderWithTheme>,
     );
 
-    const arrowLeftButton = screen.getAllByAltText('icon button')[0];
-    expect(arrowLeftButton.getAttribute('src')).toBe('arrow-left.svg');
+    const prevButton = screen.getAllByAltText('icon button')[0];
+    expect(prevButton.getAttribute('src')).toBe('arrow-left.svg');
   });
 
-  it('displays the arrow right button', () => {
+  it('displays the prev button', () => {
     render(
       <RenderWithTheme>
         <Navigation />
       </RenderWithTheme>,
     );
 
-    const arrowLeftButton = screen.getAllByAltText('icon button')[1];
-    expect(arrowLeftButton.getAttribute('src')).toBe('arrow-right.svg');
+    const nextButton = screen.getAllByAltText('icon button')[1];
+    expect(nextButton.getAttribute('src')).toBe('arrow-right.svg');
   });
 
   it('displays the steps', () => {
@@ -32,10 +32,8 @@ describe('<Navigation />', () => {
       </RenderWithTheme>,
     );
 
-    const step = screen.getAllByText('0')[0];
+    const [step, totalsteps] = screen.getAllByText('0');
     expect(step).toBeInTheDocument();
-
-    const totalsteps = screen.getAllByText('0')[1];
     expect(totalsteps).toBeInTheDocument();
   });
 
