@@ -31,7 +31,33 @@ describe('<Header />', () => {
     expect(screen.getByText('Pages')).toBeInTheDocument();
   });
 
+  it('displays the theme button with the dark icon', () => {
+    render(
+      <RenderWithRouter>
+        <RenderWithTheme>
+          <Header {...props} />
+        </RenderWithTheme>
+      </RenderWithRouter>,
+    );
+
+    const themeButton = screen.getByAltText('icon button');
+    expect(themeButton.getAttribute('src')).toBe('dark-icon.svg');
+  });
+
   describe('when the header has navigation', () => {
+    it('displays the correct styles', () => {
+      render(
+        <RenderWithRouter>
+          <RenderWithTheme>
+            <Header {...props} withNavigation />
+          </RenderWithTheme>
+        </RenderWithRouter>,
+      );
+
+      const header = screen.getByRole('banner');
+      expect(header).toHaveStyleRule('justify-content', 'space-between');
+    });
+
     it('does not display the logo', () => {
       render(
         <RenderWithRouter>
@@ -54,7 +80,7 @@ describe('<Header />', () => {
       );
 
       const [closeButton] = screen.getAllByAltText('icon button');
-      expect(closeButton.getAttribute('src')).toBe('close.svg');
+      expect(closeButton.getAttribute('src')).toBe('close-dark.svg');
     });
 
     it('displays the artboard navigation', () => {

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
+import { lightTheme } from '../../../helpers/theme';
 import DocumentView from '../DocumentView';
 
 describe('<DocumentView />', () => {
@@ -49,7 +50,7 @@ describe('<DocumentView />', () => {
       </RenderWithRouter>,
     );
 
-    const thumbnail = screen.getByRole('button');
+    const thumbnail = screen.getAllByRole('button')[1];
 
     const thumbnailImage = thumbnail.querySelector('img');
     expect(thumbnailImage.getAttribute('src')).toBe('thumbnail_1.png');

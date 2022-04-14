@@ -6,6 +6,7 @@ const rotate = keyframes`
 `;
 
 const StyledLoaderWrapper = styled.div`
+  background-color: ${({ theme }) => theme.mainBg};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +15,8 @@ const StyledLoaderWrapper = styled.div`
 `;
 
 const StyledLoader = styled.div`
-  border: 4px solid ${({ theme }) => theme.palette.PRIMARY};
-  border-top: 4px solid ${({ theme }) => theme.palette.SECONDARY};
+  border: 4px solid ${({ theme }) => theme.loader};
+  border-top: 4px solid transparent;
   border-radius: 50%;
   width: 40px;
   height: 40px;

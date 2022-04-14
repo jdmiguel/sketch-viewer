@@ -11,7 +11,7 @@ describe('<Navigation />', () => {
     );
 
     const prevButton = screen.getAllByAltText('icon button')[0];
-    expect(prevButton.getAttribute('src')).toBe('arrow-left.svg');
+    expect(prevButton.getAttribute('src')).toBe('arrow-left-dark.svg');
   });
 
   it('displays the prev button', () => {
@@ -22,7 +22,7 @@ describe('<Navigation />', () => {
     );
 
     const nextButton = screen.getAllByAltText('icon button')[1];
-    expect(nextButton.getAttribute('src')).toBe('arrow-right.svg');
+    expect(nextButton.getAttribute('src')).toBe('arrow-right-dark.svg');
   });
 
   it('displays the steps', () => {

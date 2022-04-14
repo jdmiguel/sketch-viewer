@@ -2,9 +2,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'src/helpers/theme';
-import GlobalStyles from 'src/helpers/globalStyles';
+import { ThemeModeContextProvider } from 'src/contexts/themeModeContext';
+import { GlobalStyles } from 'src/helpers/theme';
 import App from 'src/components/App';
 
 const client = new ApolloClient({
@@ -22,10 +21,10 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+        <ThemeModeContextProvider>
           <GlobalStyles />
           <App />
-        </ThemeProvider>
+        </ThemeModeContextProvider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams, Params } from 'react-router-dom';
-import { GET_ARTBOARDS } from 'src/helpers/query';
 import { ArtboardNavigationContextProvider } from 'src/contexts/artboardNavigationContext';
 import Loader from 'src/components/ui/Loader';
+import { GET_ARTBOARDS } from 'src/helpers/query';
 import { Artboard, ArtboardsQueryData, ArtboardsQueryVars } from 'src/helpers/types';
 import DocumentView from './DocumentView';
 

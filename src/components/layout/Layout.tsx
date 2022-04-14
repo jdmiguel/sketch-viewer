@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import Header from './Header';
 
 export const StyledLayout = styled.div`
-  background-color: ${({ theme }) => theme.palette.LIGHT_MEDIUM};
+  background-color: ${({ theme }) => theme.mainBg};
   display: flex;
   flex-direction: column;
+  color: ${({ theme }) => theme.text};
   min-height: 100vh;
   position: relative;
 `;

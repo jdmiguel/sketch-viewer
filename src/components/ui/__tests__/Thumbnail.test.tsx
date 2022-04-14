@@ -37,12 +37,9 @@ describe('<Thumbnail />', () => {
       </RenderWithTheme>,
     );
 
-    const thumbnail = screen.getByRole('button');
+    const thumbnail = screen.getByTestId('thumbnail');
     expect(thumbnail).toHaveStyleRule('align-items', 'flex-start');
-    expect(thumbnail).toHaveStyleRule('background-color', '#EFEFEF');
-    expect(thumbnail).toHaveStyleRule('border', '1px solid #E0E0E0');
     expect(thumbnail).toHaveStyleRule('border-radius', '8px');
-    expect(thumbnail).toHaveStyleRule('box-shadow', '1px 2px 5px rgba(0,0,0,0.1)');
     expect(thumbnail).toHaveStyleRule('font-weight', '600');
   });
 
@@ -55,7 +52,7 @@ describe('<Thumbnail />', () => {
       </RenderWithTheme>,
     );
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByTestId('thumbnail'));
     expect(onClick).toHaveBeenCalledWith('document');
   });
 });

@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import Root from '../root';
 
@@ -36,10 +37,7 @@ describe('<Root />', () => {
       </RenderWithRouter>,
     );
 
-    const thumbnails = screen.getAllByRole('button');
-    expect(thumbnails.length).toBe(2);
-
-    const [firstThumbnail, secondThumbnail] = thumbnails;
+    const [firstThumbnail, secondThumbnail] = screen.getAllByTestId('thumbnail');
 
     const firstThumbnailImage = firstThumbnail.querySelector('img');
     expect(firstThumbnailImage.getAttribute('src')).toBe('document.png');

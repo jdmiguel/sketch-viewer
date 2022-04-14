@@ -4,17 +4,23 @@ import styled from 'styled-components';
 import IconButton from 'src/components/ui/IconButton';
 import Navigation from 'src/components/ui/Navigation';
 import ArtboardNavigationContext from 'src/contexts/artboardNavigationContext';
+import ThemeModeContext from 'src/contexts/themeModeContext';
 import logoPath from 'src/assets/sketch-logo.svg';
-import closePath from 'src/assets/close.svg';
-import separatorPath from 'src/assets/separator.svg';
+import closeDarkPath from 'src/assets/close-dark.svg';
+import closeLightPath from 'src/assets/close-light.svg';
+import separatorDarkPath from 'src/assets/separator-dark.svg';
+import separatorLightPath from 'src/assets/separator-light.svg';
+import darkIconPath from 'src/assets/dark-icon.svg';
+import lightIconPath from 'src/assets/light-icon.svg';
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<{ withNavigation: boolean }>`
   align-items: center;
-  background-color: ${({ theme }) => theme.palette.LIGHT_MAX};
-  box-shadow: 0 2px 2px ${({ theme }) => theme.palette.DARK_TRANSPARENT};
+  background-color: ${({ theme }) => theme.headerBg};
+  box-shadow: 0 2px 2px ${({ theme }) => theme.shadow};
   display: flex;
   gap: 14px;
   height: 32px;
+  justify-content: ${({ withNavigation }) => (withNavigation ? 'space-between' : 'flex-start')};
   padding: 18px;
 `;
 
@@ -41,7 +47,6 @@ export const StyledTitleWrapper = styled.div<{ withNavigation: boolean }>`
 `;
 
 export const StyledTitle = styled.h2`
-  color: ${({ theme }) => theme.palette.DARK_MAX};
   font-size: 1.1rem;
   line-height: 0;
 `;
@@ -52,14 +57,20 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ title, withNavigation = false }) => {
+  const { mode, selectMode } = useContext(ThemeModeContext);
   const { closeArtboardDetailMode } = useContext(ArtboardNavigationContext);
 
+  const isLightMode = mode === 'LIGHT';
+
   return (
-    <StyledHeader>
+    <StyledHeader withNavigation={withNavigation}>
       {withNavigation ? (
         <StyledNavigationWrapper>
-          <IconButton iconPath={closePath} onClick={closeArtboardDetailMode} />
-          <img src={separatorPath} alt="separator" />
+          <IconButton
+            iconPath={isLightMode ? closeDarkPath : closeLightPath}
+            onClick={closeArtboardDetailMode}
+          />
+          <img src={isLightMode ? separatorDarkPath : separatorLightPath} alt="separator" />
           <Navigation />
         </StyledNavigationWrapper>
       ) : (
@@ -69,12 +80,13 @@ const Header: React.FC<Props> = ({ title, withNavigation = false }) => {
               <img src={logoPath} alt="logo" />
             </StyledLogo>
           </Link>
-          <img src={separatorPath} alt="separator" />
+          <img src={isLightMode ? separatorDarkPath : separatorLightPath} alt="separator" />
         </>
       )}
       <StyledTitleWrapper withNavigation={withNavigation}>
         <StyledTitle>{title}</StyledTitle>
       </StyledTitleWrapper>
+      <IconButton iconPath={isLightMode ? darkIconPath : lightIconPath} onClick={selectMode} />
     </StyledHeader>
   );
 };

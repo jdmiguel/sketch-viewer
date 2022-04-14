@@ -41,3 +41,5 @@ export type Document = {
   imgPath: string;
   name: string;
 };
+
+export type ThemeMode = 'LIGHT' | 'DARK';

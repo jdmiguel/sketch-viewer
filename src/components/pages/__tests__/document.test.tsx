@@ -89,7 +89,7 @@ const mocks = [
 ];
 
 describe('<Document />', () => {
-  it('displays the correct title and thumbnails after loading', async () => {
+  it('displays the logo and the correct title after loading', async () => {
     render(
       <RenderWithRouter>
         <MockedProvider mocks={mocks} addTypename={false}>
@@ -103,13 +103,32 @@ describe('<Document />', () => {
     expect(screen.getByRole('progressbar')).toBeVisible();
     // Show the document page after loading
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    await screen.findAllByTestId('thumbnail');
 
-    const thumbnails = await screen.findAllByRole('button');
+    const logo = screen.getByAltText('logo');
+    expect(logo.getAttribute('src')).toBe('sketch-logo.svg');
 
     const header = screen.getByRole('banner');
     expect(header.querySelector('h2').textContent).toBe('Document name mocked');
+  });
 
-    const [firstThumbnail, secondThumbnail, thirdThumbnail] = thumbnails;
+  it('displays the correct thumbnails after loading', async () => {
+    render(
+      <RenderWithRouter>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <RenderWithTheme>
+            <Document />
+          </RenderWithTheme>
+        </MockedProvider>
+      </RenderWithRouter>,
+    );
+
+    expect(screen.getByRole('progressbar')).toBeVisible();
+    // Show the document page after loading
+    await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    const [firstThumbnail, secondThumbnail, thirdThumbnail] = await screen.findAllByTestId(
+      'thumbnail',
+    );
 
     const firstThumbnailImage = firstThumbnail.querySelector('img');
     expect(firstThumbnailImage.getAttribute('src')).toBe('thumbnail_1.png');
@@ -141,8 +160,8 @@ describe('<Document />', () => {
     expect(screen.getByRole('progressbar')).toBeVisible();
     // Show the document page after loading
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    const [firstThumbnail] = await screen.findAllByTestId('thumbnail');
 
-    const [firstThumbnail] = await screen.findAllByRole('button');
     // Show the artboard detail
     await userEvent.click(firstThumbnail);
 
@@ -167,8 +186,8 @@ describe('<Document />', () => {
     expect(screen.getByRole('progressbar')).toBeVisible();
     // Show the document page after loading
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    const [firstThumbnail] = await screen.findAllByTestId('thumbnail');
 
-    const [firstThumbnail] = await screen.findAllByRole('button');
     // Show the artboard detail
     await userEvent.click(firstThumbnail);
 
@@ -194,8 +213,8 @@ describe('<Document />', () => {
     expect(screen.getByRole('progressbar')).toBeVisible();
     // Show the document page after loading
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    const [firstThumbnail] = await screen.findAllByTestId('thumbnail');
 
-    const [firstThumbnail] = await screen.findAllByRole('button');
     // Show the artboard detail
     await userEvent.click(firstThumbnail);
 
@@ -221,8 +240,8 @@ describe('<Document />', () => {
     expect(screen.getByRole('progressbar')).toBeVisible();
     // Show the document page after loading
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
+    const [firstThumbnail] = await screen.findAllByTestId('thumbnail');
 
-    const [firstThumbnail] = await screen.findAllByRole('button');
     // Show the artboard detail
     await userEvent.click(firstThumbnail);
 

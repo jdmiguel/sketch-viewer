@@ -7,14 +7,14 @@ import {
   MockedProviderState,
 } from '@apollo/client/testing/react/MockedProvider';
 
+type RenderProps = {
+  children: JSX.Element;
+};
+
 export const MockedProvider = MockedProviderBroken as React.ComponentClass<
   MockedProviderProps,
   MockedProviderState
 >;
-
-type RenderProps = {
-  children: JSX.Element;
-};
 
 export const RenderWithTheme = ({ children }: RenderProps) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
