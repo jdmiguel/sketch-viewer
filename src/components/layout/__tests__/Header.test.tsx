@@ -94,19 +94,5 @@ describe('<Header />', () => {
 
       expect(screen.getByRole('navigation')).toBeInTheDocument();
     });
-
-    it('displays the title wrapper with the correct styles', () => {
-      render(
-        <RenderWithRouter>
-          <RenderWithTheme>
-            <Header {...props} withNavigation />
-          </RenderWithTheme>
-        </RenderWithRouter>,
-      );
-
-      const titleWrapper = screen.getByText('Pages').parentNode;
-      expect(titleWrapper).toHaveStyleRule('justify-content', 'center');
-      expect(titleWrapper).toHaveStyleRule('position', 'absolute');
-    });
   });
 });
