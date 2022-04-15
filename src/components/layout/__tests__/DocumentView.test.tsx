@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
-import { lightTheme } from '../../../helpers/theme';
 import DocumentView from '../DocumentView';
 
 describe('<DocumentView />', () => {

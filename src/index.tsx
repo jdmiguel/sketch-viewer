@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeModeContextProvider } from 'src/contexts/themeModeContext';
-import { GlobalStyles } from 'src/helpers/theme';
 import App from 'src/components/App';
+import { GlobalStyles } from 'src/helpers/theme';
 
 const client = new ApolloClient({
   link: new HttpLink({

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import IconButton from './IconButton';
 import ArtboardNavigationContext from 'src/contexts/artboardNavigationContext';
 import ThemeModeContext from 'src/contexts/themeModeContext';
+import IconButton from 'src/components/ui/IconButton';
 import arrowLeftDarkPath from 'src/assets/arrow-left-dark.svg';
 import arrowLeftLightPath from 'src/assets/arrow-left-light.svg';
 import breadcrumbDarkPath from 'src/assets/breadcrumb-dark.svg';

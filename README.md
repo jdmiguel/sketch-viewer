@@ -27,16 +27,17 @@ This app is mainly developed with React and Typescript. Styled Components are us
 
 The source files are in the _src folder_ that is composed of the following folders:
 
-- **assets**: Images used in the application
+- **assets**: Images used in the app
 - **components**: All the components organized by the following folders:
   - **ui**: Core components that are reused across the application
-  - **layout**: Presentational components with reusable layouts
-  - **pages**: Container components related to the pages of the application
+  - **layout**: Presentational components with the views of the app
+  - **pages**: Container components related to the pages of the app
 - **contexts**: React contexts to avoid prop drilling issues
 - **helpers**: Several utilities such as types, test utils, and theme settings
 
 ### BONUS
 
 - **testing**: Unit and integration tests with Jest and React Testing Library
-- **routing system**: Router navigation from the root to the document page by using the id of the given documents
+- **routing system**: Router navigation from the root to the document page by using the id of the given documents. Code splitting has been implemented to
+  allow the user download the app incrementally
 - **theme mode**: Switchable theme mode (light and dark theme)

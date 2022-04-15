@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import IconButton from 'src/components/ui/IconButton';
-import Navigation from 'src/components/ui/Navigation';
 import ArtboardNavigationContext from 'src/contexts/artboardNavigationContext';
 import ThemeModeContext from 'src/contexts/themeModeContext';
+import IconButton from 'src/components/ui/IconButton';
+import Navigation from 'src/components/ui/Navigation';
 import logoPath from 'src/assets/sketch-logo.svg';
 import closeDarkPath from 'src/assets/close-dark.svg';
 import closeLightPath from 'src/assets/close-light.svg';

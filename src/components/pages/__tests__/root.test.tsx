@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { RenderWithRouter, RenderWithTheme } from '../../../helpers/testUtils';
 import Root from '../root';
 

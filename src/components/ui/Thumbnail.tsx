@@ -14,6 +14,7 @@ const StyledThumbnail = styled.button<{ withRootStyles: boolean }>`
   padding: 20px;
   outline: none;
   transition: background-color 0.2s ease-out;
+
   &:hover {
     background-color: ${({ theme }) => theme.thumbnailBgHover};
   }

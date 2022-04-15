@@ -6,8 +6,8 @@ import Loader from 'src/components/ui/Loader';
 import { lightTheme, darkTheme } from 'src/helpers/theme';
 
 /* Lazy Components */
-const Root = lazy(() => import('./pages/root'));
-const Document = lazy(() => import('./pages/document'));
+const Root = lazy(() => import('src/components/pages/root'));
+const Document = lazy(() => import('src/components/pages/document'));
 
 const App = () => {
   const { mode } = useContext(ThemeModeContext);
