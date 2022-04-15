@@ -18,16 +18,21 @@ export const StyledHeader = styled.header<{ withNavigation: boolean }>`
   background-color: ${({ theme }) => theme.headerBg};
   box-shadow: 0 2px 2px ${({ theme }) => theme.shadow};
   display: flex;
-  gap: 14px;
+  gap: 12px;
   height: 32px;
   justify-content: ${({ withNavigation }) => (withNavigation ? 'space-between' : 'flex-start')};
   padding: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `;
 
 export const StyledNavigationWrapper = styled.div`
   align-items: center;
   display: flex;
-  gap: 14px;
+  gap: 4px;
+  height: 100%;
+  flex: 1;
 `;
 
 export const StyledLogo = styled.h1`
@@ -35,11 +40,6 @@ export const StyledLogo = styled.h1`
 `;
 
 export const StyledTitleWrapper = styled.div<{ withNavigation: boolean }>`
-  display: flex;
-  left: ${({ withNavigation }) => withNavigation && '0'};
-  justify-content: ${({ withNavigation }) => (withNavigation ? 'center' : 'flex-start')};
-  position: ${({ withNavigation }) => withNavigation && 'absolute'};
-  width: 100%;
   @media only screen and (max-width: 768px) {
     justify-content: flex-end;
     position: initial;
@@ -48,7 +48,12 @@ export const StyledTitleWrapper = styled.div<{ withNavigation: boolean }>`
 
 export const StyledTitle = styled.h2`
   font-size: 1.1rem;
-  line-height: 0;
+`;
+
+export const StyledThemeButtonWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 type Props = {
@@ -86,7 +91,9 @@ const Header: React.FC<Props> = ({ title, withNavigation = false }) => {
       <StyledTitleWrapper withNavigation={withNavigation}>
         <StyledTitle>{title}</StyledTitle>
       </StyledTitleWrapper>
-      <IconButton iconPath={isLightMode ? darkIconPath : lightIconPath} onClick={selectMode} />
+      <StyledThemeButtonWrapper>
+        <IconButton iconPath={isLightMode ? darkIconPath : lightIconPath} onClick={selectMode} />
+      </StyledThemeButtonWrapper>
     </StyledHeader>
   );
 };
